@@ -1,0 +1,6 @@
+target
+*.war
+*.jar
+*.log
+.settings
+

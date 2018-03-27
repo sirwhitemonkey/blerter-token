@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blerter-token
+spec:
+  type: NodePort
+  ports:
+    - name: token-server
+      port: 4020
+      protocol: TCP
+      targetPort: 4020
+    - name: grpc--token-server
+      port: 4022
+      protocol: TCP
+      targetPort: 4022  
+  selector:
+    name:  blerter-token
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: blerter-token
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name:  blerter-token
+      labels:
+        name:  blerter-token
+        app:  blerter-token
+    spec:
+      containers:
+        - name:  blerter-token
+          image: sirwhitemonkey/blerter-token
+          #resources:
+          #  requests:
+          #    memory: 512Mi
+          #  limits:
+          #    memory: 512Mi
+          ports:
+            - containerPort: 4020
+            - containerPort: 4022
+            
+

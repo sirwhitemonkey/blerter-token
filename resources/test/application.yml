@@ -1,0 +1,16 @@
+server:
+  port: 4020
+    
+grpc:
+  port: 4022
+  
+spring:
+  output:
+    ansi:
+      enabled: always
+      
+jwt:
+  audience: blerterTeam
+  issuer: blerterTeam
+  signingKey: YmxlcnRlclRlYW06YmxlcnRlclRlYW0=
+  durationInDays: 1
